@@ -11,6 +11,7 @@ def get_all_task(request:HttpRequest):
             "result":{}
         }
         for i in taskn:
+            name=i.task
             result.setdefault(i,[])
             result[i].append({          
                     'id':i.id,

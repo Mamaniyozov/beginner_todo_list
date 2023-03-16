@@ -9,7 +9,7 @@ class Todolist(models.Model):
     def __str__(self) -> str:
         return f"{self.id} {self.name}"
         
-    def to_dick(self):
+    def to_dict(self):
         returnd = {
             "task":self.task,
             "id":self.id
