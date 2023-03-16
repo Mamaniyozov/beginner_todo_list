@@ -6,7 +6,7 @@ from api.models import Todolist
 
 def get_all_task(request:HttpRequest):
     if request.method=='GET':
-        taskn=Todolist.objects.all
+        taskn=Todolist.objects.all()
         result={
             "result":{}
         }
@@ -20,4 +20,14 @@ def get_all_task(request:HttpRequest):
                     
                     
                     })
+def delete_task(reqeust: HttpRequest, pk: int) -> JsonResponse:
+    """delete product from database by id"""
+    if reqeust.method == "POST":
+        try:
+            # get product from database by id
+            product = Todolist.objects.get(id=pk)
+            product.delete()
+            return JsonResponse(product.to_dict())
+        except ObjectDoesNotExist:
+            return JsonResponse({"status": "object doesn't exist"})
 # Create your views here.
