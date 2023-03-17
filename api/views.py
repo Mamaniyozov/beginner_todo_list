@@ -11,11 +11,12 @@ def get_all_task(request:HttpRequest):
             "result":{}
         }
         for i in taskn:
-            name=i.task
+            
             result.setdefault(i,[])
             result[i].append({          
-                    'id':i.id,
-                    "task":name,
+                    'id':id,
+                    "task":i.task,
+                    "task_text":i.task_text,
                     'created_at':i.created_at,
                     'updated_at':i.updated_at
                     
